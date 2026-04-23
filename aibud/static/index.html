@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AiBud</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">AI OPERATIONS CONSOLE</p>
+          <h1>AiBud</h1>
+          <p class="lede">Local-first assistant runtime with tasks, memory, reports, tool traces, and a lightweight operator dashboard.</p>
+          <div class="hero-notes">
+            <div class="mini-note">
+              <strong>Readable by default</strong>
+              <span>Latest run, active work, and system traces are surfaced first.</span>
+            </div>
+            <div class="mini-note">
+              <strong>Local-first</strong>
+              <span>Open-source inference through Ollama stays cheap and inspectable.</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-stats" id="overview"></div>
+      </header>
+
+      <section class="command-center">
+        <section class="panel ask-panel">
+          <div class="section-title">
+            <div>
+              <h2>Run Prompt</h2>
+              <span>Ask for a build, report, research pass, or bug triage.</span>
+            </div>
+            <span>Ollama-first, open-source by default</span>
+          </div>
+          <form id="ask-form">
+            <label class="field">
+              <span>Project</span>
+              <input id="project" name="project" type="text" value="Inbox" placeholder="Project name">
+            </label>
+            <label class="field">
+              <span>Mode</span>
+              <select id="mode" name="mode">
+                <option value="auto" selected>Auto</option>
+                <option value="quick">Quick</option>
+                <option value="normal">Normal</option>
+                <option value="deep">Deep</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Prompt</span>
+              <textarea id="prompt" name="prompt" placeholder="Ask AiBud for a game, report, bug triage, or a project plan."></textarea>
+            </label>
+            <div class="actions">
+              <button type="submit">Send to AiBud</button>
+              <button type="button" id="refresh-button" class="ghost">Refresh dashboard</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel latest-panel">
+          <div class="section-title">
+            <div>
+              <h2>Latest Output</h2>
+              <span>Most recent summary and response</span>
+            </div>
+            <span id="latest-status" class="pill subtle">Idle</span>
+          </div>
+          <div id="response" class="response-card empty">Run a prompt to populate this panel.</div>
+        </section>
+      </section>
+
+      <main class="grid">
+        <section class="panel">
+          <div class="section-title">
+            <div>
+              <h2>Projects</h2>
+              <span>Active spaces AiBud is tracking</span>
+            </div>
+          </div>
+          <div id="projects" class="stack"></div>
+        </section>
+
+        <section class="panel">
+          <div class="section-title">
+            <div>
+              <h2>Tasks</h2>
+              <span>Prioritized work across projects</span>
+            </div>
+          </div>
+          <div id="tasks" class="stack"></div>
+        </section>
+
+        <section class="panel">
+          <div class="section-title">
+            <div>
+              <h2>Memory</h2>
+              <span>Recent durable notes and preferences</span>
+            </div>
+          </div>
+          <div id="memories" class="stack"></div>
+        </section>
+
+        <section class="panel">
+          <div class="section-title">
+            <div>
+              <h2>Reports</h2>
+              <span>Generated project summaries and artifacts</span>
+            </div>
+          </div>
+          <div id="reports" class="stack"></div>
+        </section>
+
+        <section class="panel wide">
+          <div class="section-title">
+            <div>
+              <h2>Runs</h2>
+              <span>Prompt history and reasoning summaries</span>
+            </div>
+          </div>
+          <div id="runs" class="stack"></div>
+        </section>
+
+        <section class="panel wide">
+          <div class="section-title">
+            <div>
+              <h2>Event Trace</h2>
+              <span>Prompt, tool, skill, reasoning, and completion events</span>
+            </div>
+          </div>
+          <div id="events" class="stack trace"></div>
+        </section>
+      </main>
+    </div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

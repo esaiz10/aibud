@@ -1,0 +1,4 @@
+# Optional cloud providers only. The core stack runs on the Python standard library,
+# and local open-source inference uses Ollama over HTTP.
+# openai>=1.0.0
+# anthropic>=0.40.0
